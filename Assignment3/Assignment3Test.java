@@ -1,56 +1,47 @@
+//Test file for assignment 3 testing both true and false boolean. Replaced because i finally figured out how to properly run jUnit tests 
+
 import static org.junit.Assert.*;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 import org.junit.Test;
 
-public class Assignment3Test {
+public class assignment3test {
+	Assignment3 test = new Assignment3();
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		//create a map
+	
+	
+
+	@Test
+	public void testIsUniqueFalse() {
 		Map<String, String> uniqueMap = new HashMap<String, String>();
 		
-		//put entries of values and keys into the map 
+		//put entries of values and keys into the map with two keys mapping to the same value which should produce a false boolean
 		uniqueMap.put("Jessica", "Miller");
 		uniqueMap.put("Marty", "Stepp");
 		uniqueMap.put("James", "Stepp");
 
 
-		//print out the output and run method using the code inserted in the map in main
+		//test runs if boolean comes back as false 
+		assertFalse(test.isUnique(uniqueMap));
 		
-		System.out.println(isUnique(uniqueMap));
+			}
+
+	@Test
+	public void testIsUniqueTrue() {
+		Map<String, String> uniqueMap = new HashMap<String, String>();
+		
+		//put entries of values and keys into the map with no overlapping keys which should produce a true boolean  
+		uniqueMap.put("Jessica", "Miller");
+		uniqueMap.put("Marty", "Stepp");
+		
+		//test runs true if boolean comes back true
+		assertTrue(test.isUnique(uniqueMap));
+
 		
 		
-	
 
 	}
-
-	
-	public static boolean isUnique(Map<String, String> inputMap) {
-		
-		 //creating a hashset 
-		 HashSet<String> hashsetValues = new HashSet<String>();
-		  
-		 //checking if the values in the map already exist or not
-		  for (String value : inputMap.values()) {
-		   
-			  //if the value exists already exists it returns false
-			  if (hashsetValues.contains(value)) {
-		      return false;
-		    }
-			  //otherwise if it doesn't exist it adds the value
-			  else { 
-		    hashsetValues.add(value);
-			  }
-		  }
-		  //print out the values in the hash set and return true, put this value lower to make boolean happy
-		  System.out.println(hashsetValues);
-		 
-		  return true;
-		}
 
 }
