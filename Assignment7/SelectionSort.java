@@ -1,0 +1,52 @@
+//Bennett Kielbon
+//ITC 155 
+//Assignment7
+//Write a modified version of the selection sort algorithm that selects the largest element each time and moves it to the end of the array, 
+//rather than selecting the smallest element and moving it to the beginning. 
+//Will this algorithm be faster than the standard selection sort? What will its complexity class (big-Oh) be?
+
+//Despite changing the direction that information is sorted, the big Oh complexity class will remain the same on average. it will still be O(N^2) and runtime will quadruple anytime input size is doubled. fundamentally the same math is going on
+
+import java.util.Arrays;
+
+public class SelectionSort {
+
+    public static void main(String[] args) {
+
+        int[] array = {5,4,3,2,1, 22, 33, 5, 18, 45};
+
+        selectionSortMethod(array);
+
+        System.out.println(Arrays.toString(array));
+
+    }
+    
+    
+
+    public static void selectionSortMethod(int[] input) {
+
+    		//change code to loop through the array from the end, starting at input length 
+    	
+        for (int i = input.length-1; i > 0 - 1; i--) {
+
+            int max = i;
+
+            //Find the largest value left in the unsorted part of the array 
+            for (int j = 0; j < i; j++) {
+                if (input[j] > input[max]) {
+                    max = j;
+                }
+            }
+
+            // Swaps largest number with position to i
+            int swap = input[i];
+            input[i] = input[max];
+            input[max] = swap;
+
+        }
+
+    }
+    
+    
+
+}
